@@ -1,103 +1,177 @@
+"use client";
+
+import React, { useEffect, useState, useRef } from "react";
+import RotatingCube from "./components/Cube";
 import Image from "next/image";
+import ProjectCard from "./components/ProjectCard";
+import NavBar from "./components/NavBar";
+import Section from "./components/Section";
+import "animate.css";
+
+const projects = [
+  {
+    title: "Webbie Pet",
+    description:
+      "A tamagotchi style game created with JavaScript, HTML5 Canvas, SASS, Next.js, and Node.js.",
+    image: "/placeholder1.png",
+  },
+  {
+    title: "Project Two",
+    description: "A short description of project two.",
+    image: "/placeholder2.png",
+  },
+  {
+    title: "Project Three",
+    description: "A short description of project three.",
+    image: "/placeholder3.png",
+  },
+  {
+    title: "Project Four",
+    description: "A short description of project four.",
+    image: "/placeholder3.png",
+  },
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [lagged, setLagged] = useState({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
+  const [scrollY, setScrollY] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMouse({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const animate = () => {
+      setLagged((prev) => {
+        const speed = 0.7; // Lower = more lag
+        return {
+          x: prev.x + (mouse.x - prev.x) * speed,
+          y: prev.y + (mouse.y - prev.y) * speed,
+        };
+      });
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, [mouse]);
+
+  return (
+    <>
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          background: `radial-gradient(circle 1000px at ${lagged.x}px ${lagged.y}px, rgba(200,120,100,0.1), transparent 80%)`,
+          transition: "background 0.1s",
+        }}
+        aria-hidden="true"
+      />
+      <main className="flex flex-col items-center space-y-10 text-white relative z-10">
+        <div className="m-15"></div>
+
+        <div>
+          <Image
+            src="/craig.jpg"
+            alt="Picture of Craig"
+            width={300}
+            height={300}
+            className="rounded-full drop-shadow-[0_8px_24px_rgba(0,0,0,1)] transition-transform duration-300 hover:scale-120 animate__animated animate__fadeInDown"
+          />
         </div>
+
+        <Section
+          id="about"
+          title="This website is a WORK IN PROGRESS"
+          className="max-w-xl text-center animate__animated animate__fadeInLeft"
+        >
+          <p>
+            My portfolio website is under construction and will be completed
+            soon! Feel free to look around!{" "}
+          </p>
+        </Section>
+
+        <Section
+          id="about"
+          title="Hey, I'm Craig!"
+          className="max-w-xl text-center animate__animated animate__fadeInLeft"
+        >
+          <p>
+            I&apos;m a programmer with a{" "}
+            <b>Bachelor of Science for Computer Science</b> from the
+            <b> University of Illinois Urbana-Champaign (UIUC)</b> with a
+            passion for web development and design!
+          </p>
+        </Section>
+
+        <RotatingCube scrollY={scrollY} />
+
+        <Section
+          id="projects"
+          title="Projects"
+          className="max-w-3xl w-full text-center animate__animated animate__fadeInRight"
+        >
+          <p className="mb-6">
+            Here&apos;s some stuff I&apos;ve been working on:
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            {projects.map((project, idx) => (
+              <div
+                key={project.title}
+                className="animate__animated animate__fadeInLeft"
+                style={{ animationDelay: `${idx * 0.2}s` }}
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  image={project.image}
+                />
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section
+          id="skills"
+          title="Skills"
+          className="max-w-md text-center animate__animated animate__fadeInLeft"
+        >
+          <p>Here&apos;s what I know:</p>
+          <ul className="grid grid-cols-2 gap-2 justify-items-center mt-4">
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>Python</li>
+            <li>Kotlin</li>
+            <li>Java</li>
+            <li>C/C++</li>
+            <li>HTML/CSS</li>
+          </ul>{" "}
+        </Section>
+
+        <Section
+          id="contact"
+          title="Contact me"
+          className="max-w-md text-center animate__animated animate__fadeInUp"
+        >
+          <p>Let&apos;s get in touch!</p>
+        </Section>
+
+        <NavBar />
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
