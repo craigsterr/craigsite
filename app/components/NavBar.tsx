@@ -15,7 +15,7 @@ import "animate.css";
 export default function NavBar() {
   return (
     <header className="mt-4 fixed animate__animated animate__fadeInDown">
-      <NavigationMenu>
+      <NavigationMenu className="bg-black/50 p-3 rounded-2xl">
         <NavigationMenuList>
           <NavigationMenuItem>
             <a href="#">
@@ -62,6 +62,17 @@ export default function NavBar() {
               className={navigationMenuTriggerStyle()}
             >
               Contact{" "}
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="https://craigo.live/webbie-pet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={navigationMenuTriggerStyle()}
+            >
+              Webbie Pet
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>

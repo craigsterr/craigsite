@@ -82,7 +82,7 @@ export default function Home() {
         aria-hidden="true"
       />
       <main className="flex flex-col items-center space-y-10 text-white relative z-10">
-        <div className="m-15"></div>
+        <div className="m-20"></div>
 
         <div>
           <Image
