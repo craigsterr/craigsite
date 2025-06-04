@@ -20,7 +20,7 @@ export default function NavBar() {
           <NavigationMenuItem>
             <a href="#">
               <Image
-                src="/craig-logo.png"
+                src="./craig-logo.png"
                 alt="Craig's logo"
                 width={75}
                 height={75}
