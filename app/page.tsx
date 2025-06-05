@@ -13,22 +13,28 @@ const projects = [
     title: "Webbie Pet",
     description:
       "A tamagotchi style game created with JavaScript, HTML5 Canvas, SASS, Next.js, and Node.js.",
-    image: "/placeholder1.png",
+    image: "./webbie-sc.png",
+    link: "https://craigsterr.github.io/webbie-pet",
   },
   {
-    title: "Project Two",
-    description: "A short description of project two.",
-    image: "/placeholder2.png",
+    title: "Camellia",
+    description:
+      "A two-person web development startup focused creating stylish and responsive websites.",
+    image: "./camellia.png",
+    link: "https://craigsterr.github.io/camellia",
   },
   {
-    title: "Project Three",
-    description: "A short description of project three.",
-    image: "/placeholder3.png",
+    title: "News Template Presets",
+    description:
+      "A preset Chrome extension to automate article items when I worked as a news reporter.",
+    image: "./news.png",
+    link: "https://github.com/craigsterr/wp-news-template",
   },
   {
-    title: "Project Four",
-    description: "A short description of project four.",
-    image: "/placeholder3.png",
+    title: "Kitty Clicker",
+    description: "A clicker game made entirely in React, HTML, and Javascript.",
+    image: "./kitty.png",
+    link: "https://craigsterr.github.io/kitty-clicker",
   },
 ];
 
@@ -139,6 +145,7 @@ export default function Home() {
                   title={project.title}
                   description={project.description}
                   image={project.image}
+                  link={project.link}
                 />
               </div>
             ))}
