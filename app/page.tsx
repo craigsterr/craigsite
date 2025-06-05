@@ -90,7 +90,9 @@ export default function Home() {
         }}
         aria-hidden="true"
       />
+
       <main className="flex flex-col items-center space-y-10 text-white relative z-10">
+        <div className="mx-auto fixed w-3/4 bg-white h-full opacity-2" />
         <div className="m-15"></div>
         <div>
           <Image
