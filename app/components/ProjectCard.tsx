@@ -18,7 +18,7 @@ export default function ProjectCard({
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="bg-gray-800 rounded-lg shadow-md flex flex-col items-center max-w-xs w-80 h-100 transition-transform duration-300 hover:scale-105 overflow-hidden relative"
+      className="bg-gray-1000 rounded-lg shadow-md flex flex-col items-center max-w-xs w-80 h-100 transition-transform duration-300 hover:scale-105 overflow-hidden relative"
     >
       {/* Background image */}
       <div className="absolute inset-0 w-full h-full z-0">
