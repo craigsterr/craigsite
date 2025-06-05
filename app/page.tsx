@@ -77,6 +77,9 @@ export default function Home() {
     };
   }, [mouse]);
 
+  const linksEffect =
+    "hover:scale-110 transition-transform duration-300 hover:text-orange-400 text-lg font-bold";
+
   return (
     <>
       <div
@@ -88,8 +91,7 @@ export default function Home() {
         aria-hidden="true"
       />
       <main className="flex flex-col items-center space-y-10 text-white relative z-10">
-        <div className="m-20"></div>
-
+        <div className="m-15"></div>
         <div>
           <Image
             src="./craig.jpg"
@@ -99,37 +101,45 @@ export default function Home() {
             className="rounded-full drop-shadow-[0_8px_24px_rgba(0,0,0,1)] transition-transform duration-300 hover:scale-120 animate__animated animate__fadeInDown"
           />
         </div>
-
-        <Section
-          id="about"
-          title="This website is a WORK IN PROGRESS"
-          className="max-w-xl text-center animate__animated animate__fadeInLeft"
-        >
-          <p>
-            My portfolio website is under construction and will be completed
-            soon! Feel free to look around!{" "}
-          </p>
-        </Section>
-
+        <div className="flex flex-wrap gap-x-4 text-lg font-bold justify-center mx-5 animate__animated animate__fadeInDown">
+          <a href="./resume.pdf" className={linksEffect}>
+            Resume
+          </a>
+          <span>•</span>
+          <a
+            href="https://www.linkedin.com/in/craig-ondevilla-8106b4191"
+            className={linksEffect}
+          >
+            LinkedIn
+          </a>
+          <span>•</span>
+          <a href="https://github.com/craigsterr" className={linksEffect}>
+            Github
+          </a>
+          <span>•</span>
+          <p>craig.brdt505@gmail.com</p>
+        </div>
         <Section
           id="about"
           title="Hey, I'm Craig!"
           className="max-w-xl text-center animate__animated animate__fadeInLeft"
         >
           <p>
-            I&apos;m a programmer with a{" "}
-            <b>Bachelor of Science for Computer Science</b> from the
-            <b> University of Illinois Urbana-Champaign (UIUC)</b> with a
-            passion for web development and design!
+            I&apos;m a passionate programmer with a{" "}
+            <b>Bachelor of Science in Computer Science</b> from the
+            <b> University of Illinois Urbana-Champaign (UIUC)</b>. I specialize
+            in web development and design, and I love creating clean,
+            user-friendly digital experiences. <br /> <br />
+            Me and my friend are currently working on Camellia, a web
+            development startup providing stylish and responsive websites for
+            clients with small businesses.
           </p>
         </Section>
-
         <RotatingCube scrollY={scrollY} />
-
         <Section
           id="projects"
-          title="Projects"
-          className="max-w-3xl w-full text-center animate__animated animate__fadeInRight"
+          title="Hey, I'm Craig!"
+          className="max-w-4xl text-center animate__animated animate__fadeInLeft"
         >
           <p className="mb-6">
             Here&apos;s some stuff I&apos;ve been working on:
@@ -151,24 +161,61 @@ export default function Home() {
             ))}
           </div>
         </Section>
-
+        <RotatingCube scrollY={scrollY} />
         <Section
           id="skills"
           title="Skills"
           className="max-w-md text-center animate__animated animate__fadeInLeft"
         >
           <p>Here&apos;s what I know:</p>
-          <ul className="grid grid-cols-2 gap-2 justify-items-center mt-4">
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>Python</li>
-            <li>Kotlin</li>
-            <li>Java</li>
-            <li>C/C++</li>
-            <li>HTML/CSS</li>
-          </ul>{" "}
+          <div className="grid grid-cols-2 gap-4 text-left mt-4">
+            <div>
+              <h4 className="font-bold mb-1">Languages</h4>
+              <ul className="ml-4 list-disc">
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>Python</li>
+                <li>Kotlin</li>
+                <li>Java</li>
+                <li>C/C++</li>
+                <li>HTML/CSS</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-1">Frameworks &amp; Libraries</h4>
+              <ul className="ml-4 list-disc">
+                <li>React (incl. React Native/Expo)</li>
+                <li>Next.js</li>
+                <li>Node.js</li>
+                <li>WebGL</li>
+                <li>Tailwind CSS</li>
+                <li>SASS</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-1">Developer Tools</h4>
+              <ul className="ml-4 list-disc">
+                <li>GitHub Actions</li>
+                <li>Docker</li>
+                <li>VS Code</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-1">Design &amp; Media</h4>
+              <ul className="ml-4 list-disc">
+                <li>Adobe Photoshop</li>
+                <li>Adobe Premiere Pro</li>
+                <li>Adobe After Effects</li>
+                <li>Adobe Illustrator</li>
+                <li>Procreate</li>
+                <li>Unity/Unreal Engine</li>
+                <li>Blender</li>
+                <li>Canva</li>
+              </ul>
+            </div>
+          </div>
         </Section>
-
+        <RotatingCube scrollY={scrollY} />
         <Section
           id="contact"
           title="Contact me"
@@ -176,7 +223,6 @@ export default function Home() {
         >
           <p>Let&apos;s get in touch!</p>
         </Section>
-
         <NavBar />
       </main>
     </>

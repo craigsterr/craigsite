@@ -31,7 +31,7 @@ export default function RotatingCube({ scrollY }: { scrollY: number }) {
   const rotationY = scrollY / 300;
 
   return (
-    <Canvas style={{ width: 500, height: 500 }}>
+    <Canvas style={{ width: "100%", height: "100%" }}>
       <ambientLight />
       <directionalLight position={[5, 5, 5]} />
       <Cube rotationY={rotationY} rotationX={rotationY} />
