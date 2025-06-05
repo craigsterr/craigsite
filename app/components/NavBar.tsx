@@ -26,7 +26,7 @@ export default function NavBar() {
   return (
     <>
       <div
-        className={`hidden md:block fixed top-0 left-1/2 h-[110px] translate-x-[-50%] bg-black opacity-80 rounded-2xl transition-all duration-500 overflow-hidden ${
+        className={`hidden md:block fixed top-0 left-1/2 h-[110px] translate-x-[-50%] bg-black opacity-20 rounded-2xl transition-all duration-500 overflow-hidden ${
           scrolled ? "w-[120%]" : "w-0"
         }`}
       />
