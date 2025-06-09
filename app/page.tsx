@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import Section from "./components/Section";
 import "animate.css";
 
+// A list with information turned into ProjectCards eventually listed in the    Projects section
 const projects = [
   {
     title: "Webbie Pet",
@@ -26,9 +27,16 @@ const projects = [
   {
     title: "News Template Presets",
     description:
-      "A preset Chrome extension to automate article items when I worked as a news reporter.",
+      "A preset Firefox extension to automate article items when I worked as a news reporter.",
     image: "./news.png",
-    link: "https://github.com/craigsterr/wp-news-template",
+    link: "https://addons.mozilla.org/en-US/firefox/addon/news-template-presets/",
+  },
+  {
+    title: "Productivity Slime",
+    description:
+      "A preset Firefox extension to track time spent on unproductive tabs in the style of a video game slime.",
+    image: "./slime_sc.png",
+    link: "https://craigsterr.github.io/kitty-clicker",
   },
   {
     title: "Kitty Clicker",
