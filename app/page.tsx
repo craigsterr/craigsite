@@ -11,6 +11,13 @@ import "animate.css";
 // A list with information turned into ProjectCards eventually listed in the    Projects section
 const projects = [
   {
+    title: "Spyfall",
+    description:
+      "A web clone of the social deduction game Spyfall using Next.js and Supabase!",
+    image: "./spyfall.png",
+    link: "https://spyfall.craigo.live",
+  },
+  {
     title: "Webbie Pet",
     description:
       "A tamagotchi style game created with JavaScript, HTML5 Canvas, SASS, Next.js, and Node.js.",
@@ -22,7 +29,7 @@ const projects = [
     description:
       "A two-person web development startup focused creating stylish and responsive websites.",
     image: "./camellia.png",
-    link: "https://craigsterr.github.io/camellia",
+    link: "https://craigsterr.github.io/camellia-v2",
   },
   {
     title: "News Template Presets",
@@ -34,9 +41,9 @@ const projects = [
   {
     title: "Productivity Slime",
     description:
-      "A preset Firefox extension to track time spent on unproductive tabs in the style of a video game slime.",
+      "A Firefox extension live on the add-ons store to track time spent on unproductive tabs in the style of a video game slime.",
     image: "./slime_sc.png",
-    link: "https://craigsterr.github.io/kitty-clicker",
+    link: "https://addons.mozilla.org/en-US/firefox/addon/productivity-slime/",
   },
   {
     title: "Kitty Clicker",
